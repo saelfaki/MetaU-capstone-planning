@@ -51,13 +51,23 @@ Motivation: David is a retired business executive who believes in the transforma
 Pain Points: Concerns about the transparency of donation platforms, understanding the impact of his contributions, and ensuring that his support reaches genuinely deserving students.
 
 User Stories
+
 As a low-income high school student, I want to browse a list of available scholarships, so that I can find opportunities that match my educational goals and financial needs.
+
 As a low-income high school student, I want to receive personalized recommendations for scholarships.
+
 As a low-income high school student, I want to receive notifications about upcoming scholarship deadlines and application requirements, so that I can stay organized.
+
 As a low-income high school student, I want to track the status of my scholarship applications and receive feedback on my submissions.
+
 As a low-income high school student, I want to connect with mentors who can provide guidance on scholarship applications and college admissions.
+
 As a scholarship benefactor, I want to create a profile showcasing my interests and donation history to attract students who align with my values.
+
 As a scholarship benefactor, I want to easily search for students based on criteria like academic performance or intended major.
+
 As a scholarship benefactor, I want to view detailed profiles of students, including their academic background, personal statement, and financial situation.
+
 As a scholarship benefactor, I want to contribute funds directly through the platform securely.
+
 As a scholarship benefactor, I want to receive updates on the academic progress and achievements of students I have supported.
