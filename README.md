@@ -1,73 +1,147 @@
-User Stories
+Project Plan
+[Project Name]
+Intern: Saja Elfaki
+Intern Manager: Chady Ben Hamida
+Intern Director: Josh Katz
+Peer(s): Ning Lyu, Hanlu Chen
 
-User Roles
-Low-income highschool students- a user seeking help with affording college education
-Scholarship benefactors- a user hoping to provide financial support to students
+Overview
+Category: Education
+Story: A networking website connecting low-income high school students seeking scholarships profiles with scholarship benefactors willing to support their education financially. They can follow each other and see each other's posts.
+Market: This app is aimed at high school students from low-income backgrounds who need financial support for college, as well as older adults (scholarship benefactors) who are interested in contributing to these students' education.
+Habit: The app would be used frequently by students to search for scholarships and connect with mentors. Benefactors would use it periodically to search for students to support, review applications, and receive updates on their supported students.
+Scope: The initial scope for this project is text posts from both students and beneficiaries to network. 
 
-User Personas
-Low-Income HS Student Persona 1
-Name: Mallerie Gomez
-Location: Richmond, VA
-Age: 17
-
-Tech Use: Mallerie primarily uses her phone to access the internet and does not have regular access to a computer at home. She uses her phone for social media, messaging apps, and occasionally for schoolwork.
-
-Motivation: Mallerie comes from a low-income family and is determined to be the first in her family to attend college. She is looking for scholarships and financial aid opportunities that can help her afford tuition and living expenses.
-
-Pain Points: Limited internet access at home, financial constraints, and lack of guidance on where to find suitable scholarships. She may struggle with navigating complex application processes and understanding eligibility criteria.
-
-Low-Income HS Student Persona 2
-Name: Tyreek Homes
-Location: Philadelphia, Pennsylvania
-Age: 18
-
-Tech Use: Tyreek has access to a shared desktop computer at his local community center. He visits the center a few times a week to work on school projects and research topics related to college applications and scholarships.
-
-Motivation: Tyreek is a talented student with aspirations to pursue a career in engineering. His family struggles financially, and he needs scholarships to make his dream of attending a top engineering school a reality.
-
-Pain Points: Limited computer access, lack of personal guidance on college applications and scholarship opportunities, and difficulty understanding the requirements of different scholarships. Tyreek also faces challenges in balancing his academic responsibilities with extracurricular activities and part-time work.
-
-
-Scholarship Benefactor Persona 1
-Name: Emily Johnson
-Location: Boston, MA
-Age: 45
-
-Tech Use: Emily is skilled with computers and uses her laptop regularly for work and personal activities. She is comfortable navigating websites and online platforms.
-
-Motivation: Emily is a successful neuroscientist who benefitted from scholarships during her academic journey. She now wants to give back by supporting students from underprivileged backgrounds who show promise in STEM fields.
-
-Pain Points: Ensuring that her donations are effectively utilized, finding trustworthy platforms to connect with deserving students, and managing her time effectively between her career and charity.
-
-Scholarship Benefactor Persona 2
-Name: Kareem Robins
-Location: Houston, TX
-Age: 60
-
-Tech Use: David typically uses a smartphone and a desktop computer. He prefers simple platforms and may need assistance with navigating more complex websites.
-
-Motivation: David is a retired business executive who believes in the transformative power of education. He wants to support students from his community who face financial hardships in pursuing higher education.
-
-Pain Points: Concerns about the transparency of donation platforms, understanding the impact of his contributions, and ensuring that his support reaches genuinely deserving students.
+Product Spec
 
 User Stories
 
-As a low-income high school student, I want to browse a list of available scholarships, so that I can find opportunities that match my educational goals and financial needs.
+Required
+Users (both students and benefactors) can securely log in to access their accounts.
+New users can create an account.
+User can create / edit / delete posts: 
+Students: Can create posts seeking advice on scholarships, share their achievements, and update on their academic journey.
+Benefactors: Can create posts about available scholarships, success stories of supported students, and updates on their donations.
+User can view a feed of posts
+Users can connect with mentors (for students) or potential recipients (for benefactors) by adding them as friends to stay updated on their activities and posts. Also able to remove each other. 
+User can like posts
+Users can see their profile, which includes their bio and past posts.
 
-As a low-income high school student, I want to receive personalized recommendations for scholarships.
+Optional
+User can create multi-media (photos, videos) posts
+User can see notifications of actions made by their friends
+User can edit their profile information
+User can see their friends’ profile
+User can comment on posts
+User passwords are encrypted in the database for security
+Screen Archetypes
 
-As a low-income high school student, I want to receive notifications about upcoming scholarship deadlines and application requirements, so that I can stay organized.
 
-As a low-income high school student, I want to track the status of my scholarship applications and receive feedback on my submissions.
 
-As a low-income high school student, I want to connect with mentors who can provide guidance on scholarship applications and college admissions.
+Data Model
+[Describe the data you’re going to need to back your application. This can include database models (like tables), or external data you’ll require from some API.]
 
-As a scholarship benefactor, I want to create a profile showcasing my interests and donation history to attract students who align with my values.
+Profile Attributes: 
+id (integer)
+username (text)
+password(text)
+email (text)
+bio (text)
+role (text: student or benefactor)
 
-As a scholarship benefactor, I want to easily search for students based on criteria like academic performance or intended major.
+Post Attributes:
+id (integer)
+user_id (integer - foreign key to User)
+content (text)
+Interview location (text, optional)
+created_at (datetime)
+updated_at (datetime)
 
-As a scholarship benefactor, I want to view detailed profiles of students, including their academic background, personal statement, and financial situation.
+Friends Attributes:
+id (integer)
+user_id (integer - foreign key to User)
+friend_id (integer - foreign key to User)(user who is being added as a friend)
+created_at (datetime)
 
-As a scholarship benefactor, I want to contribute funds directly through the platform securely.
+Like Attributes:
+id (integer)
+ user_id (integer - foreign key to User)
+post_id (integer - foreign key to Post)
+created_at (datetime)
 
-As a scholarship benefactor, I want to receive updates on the academic progress and achievements of students I have supported.
+Server Endpoints
+[Describe the endpoints that your application is going to consume from your server. If you’re using REST, then you’ll probably want to include the method (GET/POST/etc) and the expected parameters (query parameters, body parameters, etc.)]
+
+GET/posts: Fetches a feed of posts from friends and followed users.
+
+POST/posts: Creates a new post.
+
+PUT/posts/{post_id}: Updates an existing post.
+
+DELETE/posts/{post_id}: Deletes a specific post
+
+POST/friends/{user_id}: Adds a user as a friend.
+
+DELETE/friends/{user_id}: Removes a user from friends list.
+
+POST/posts/{post_id}/like: Likes a specific post.
+
+GET/profile: Retrieves the user's profile information.
+
+POST/profile: Creates a new user account.
+
+PUT/profile: Updates a user's account.
+Navigation
+
+Login/Registration Screen: Allows users to log in or register for a new account.
+Home Feed Screen: shows a feed of posts
+
+Create Post Screen: allows users to create a new post, text box and post button
+
+User Profile Screen: displays the user's profile information, username, bio, posts by user, edit post button, edit profile button
+
+Friend List Sidebar: list of friends username, unfriend button
+
+Search Friends Screen: allows users to search for and add new friends, search bar, list of search results, add friend button
+
+Project Requirements
+[Based on the Project Guide, describe how your project is going to be fulfilling each of the base project requirements.]
+
+Technical Challenges
+For your project, you should demonstrate that you can apply what you’ve learned so far and expand on that knowledge to write code and implement features that go beyond the scope of the projects you worked on during CodePath.
+
+Based on the general idea and direction of your project requirements, your intern manager will create at least two (2) Technical Challenges for you. This section is all about explaining what they are and how you’re planning to tackle them - you’ll work together with your manager to fill it out. 
+
+Technical Challenge #1 - [Name/Small Description]
+Matching system with hs students and benefactors 
+What
+What problem are you solving, and what parts go beyond what you learned in CodePath? 
+How
+Explain in words how you’ll solve this problem. 
+
+You’re encouraged to expand on this section with pseudo-code, links to external frameworks, architecture / design diagrams, anything that you can use to explain this to others!
+Technical Challenge #2
+Calender when deadlines are approaching for students when matched
+ uploading secure documents in application process
+What
+How
+
+Database Integration
+[Describe what you are using for database storage. For example, Parse, MongoDB, Sequelize, etc.]
+
+PostgreSQL database
+External APIs
+[Describe at least one external API you’re using for your project. For example, Google Maps, Spoonacular, OpenWeather, etc.]
+
+Google Maps, photo of interview spot
+
+Authentication
+[Describe how user authentication is handled for your project, including logging in and signing up. Also describe any kind of cookie / session management you’re doing and how you’re implementing it, and how this affects navigation between different screens by the same user.]
+
+Visuals and Interactions
+[Provide details on how your app is fulfilling the following UI craft requirements, and how these are technically accomplished.]
+
+Interesting Cursor Interaction
+UI Component with Custom Visual Styling
+Loading State
+
